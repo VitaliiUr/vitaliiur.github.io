@@ -328,14 +328,6 @@ footer.sticky-bottom {
     }
   }
 
-  .card {
-    img {
-      width: 100%;
-    }
-    .card-title {
-      color: $black-color;
-    }
-  }
 
   .card-item {
     width: auto;
@@ -347,8 +339,10 @@ footer.sticky-bottom {
     }
 
     .card {
+      height: 150px;
       img {
-        width: 100%;
+        max-height: 150px;
+        max-width: 100%;
       }
       .card-title {
         color: $black-color;
@@ -357,6 +351,7 @@ footer.sticky-bottom {
   }
 
   .grid-item {
+    height: 150px;
     width: 250px;
     margin-bottom: 10px;
   }

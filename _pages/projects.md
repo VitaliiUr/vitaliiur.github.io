@@ -4,7 +4,7 @@ title: projects
 show_title: false
 permalink: /projects/
 # description: My projects
-nav: true
+nav: false
 display_categories: [research, fun]
 horizontal: true
 ---
@@ -18,7 +18,7 @@ horizontal: true
       <!-- Generate cards for each project -->
       {% if page.horizontal %}
         <div class="container">
-          <div class="row row-cols-2">
+          <div class="row row-cols-1">
           {% for project in sorted_projects %}
             {% if project.show %}
               {% include projects_hrz.html %}
@@ -43,7 +43,7 @@ horizontal: true
     <!-- Generate cards for each project -->
     {% if page.horizontal %}
       <div class="container">
-        <div class="row row-cols-2">
+        <div class="row row-cols-1">
         {% for project in sorted_projects %}
           {% if project.show %}
               {% include projects_hrz.html %}
