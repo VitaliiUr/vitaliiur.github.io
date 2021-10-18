@@ -100,8 +100,8 @@ Symulacja **N** gier z róźnymi
 **L** - liczba rozgrywek do ukończenia gry  
 $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$;  
 **a** = **b**=50  
-Proponowana całkowita liczba gier **N** = 20000
-Symulacja **N** gier i dla każdej gry obliczyć iłość rozgrywek. 
+Proponowana całkowita liczba gier **N** = 20000  
+Symulacja **N** gier, dla każdej gry obliczyć iłość rozgrywek. 
   1.  Histogram prawdopodobieństwa P(L) - liczby rozgrywek do ukończenia gry
   2.  Wyliczyć średnią długość rozgrywki 
 
@@ -111,21 +111,21 @@ Symulacja **N** gier z róźnymi wartościami $$p_A$$.
 Dla każdej wartości $$p_A$$ obliczyć maksymalną iłość rozgrywek.
   1. Wykres $$L_{max}(p_A)$$ - maksymalna długość rozgrywek $$L_{max}$$ przy **N** rozgrywkach jako zależność od wartości $$p_A$$
 
-- **Problem G** *(Nie obowiązkowe)*  
+- **Problem F** *(Nie obowiązkowe)*  
 **n** = 2,10,20,...,100  
 **a** = **b** = 50  
 $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$
 Symylacja **n** rozgrywek **N** razy.
   1. Histogram prawdopodobieństwa **P(M)** - że gracz **A** ma kapitał **M** po **n** rozgrywkach
 
-- **Problem H** *(Obowiązkowe)*  
+- **Problem G** *(Obowiązkowe)*  
   Symulacja kilku gier (do 10)  
   spróbować dla różnych wartościej $$p_A$$
   1. Wykres trajektorii **liczby wygranych**  jednego z graczy jako zależność od numera rozgrywki
   2. Wykres trajektorii **kapitału** jednego z graczy jako zależność od numera rozgrywki  
 
 
-- **Problem I** *(Obowiązkowe częściowo)*  
+- **Problem H** *(Obowiązkowe częściowo)*  
   Problemy B, C, D, H dla kilku, np. pięciu,  graczy.  
   Różne kombinacje wartościej $$p_i$$ - prawdopodobieństw
   wygranej dla gracza numer $$i$$.  
