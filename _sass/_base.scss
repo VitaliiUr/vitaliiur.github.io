@@ -243,7 +243,7 @@ footer.fixed-bottom {
 
 footer.sticky-bottom {
   border-top: 1px solid $grey-color-light;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 40px;
   font-size: 0.9rem;
 }
@@ -389,20 +389,23 @@ footer.sticky-bottom {
     }
 
     .card {
-      background-color: --global-bg-color;
+      background-color: var(--global-code-bg-color);
       img {
         width: 100%;
       }
       .card-title {
-        color: $black-color;
+        color: var(--global-text-color);
+      }
+      .card-text {
+        color: var(--global-text-color-light);
       }
     }
   }
 
 
   h2.category {
-    color: $grey-color-light;
-    border-bottom: 1px solid $grey-color-light;
+    color: var(--global-footer-bg-color);
+    border-bottom: 1px solid var(--global-footer-text-color);
     padding-top: 0.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -429,15 +432,15 @@ footer.sticky-bottom {
     }
   }
   h2.year {
-    color: $grey-color-light;
-    border-top: 1px solid $grey-color-light;
+    color: var(--global-text-color-light);
+    border-top: 1px solid var(--global-footer-text-color);
     padding-top: 1rem;
     margin-top: 2rem;
     margin-bottom: -2rem;
     text-align: right;
   }
   h2.group {
-    color: $code-bg-color-dark;
+    color: var(--global-text-color);
     border-top: 1px solid $grey-color-light;
     padding-top: 1rem;
     margin-top: 2rem;

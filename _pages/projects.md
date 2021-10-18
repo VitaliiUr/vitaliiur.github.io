@@ -1,9 +1,10 @@
 ---
 layout: page
 title: projects
+show_title: false
 permalink: /projects/
-description: A growing collection of your cool projects.
-nav: false
+# description: My projects
+nav: true
 display_categories: [research, fun]
 horizontal: true
 ---
@@ -19,14 +20,18 @@ horizontal: true
         <div class="container">
           <div class="row row-cols-2">
           {% for project in sorted_projects %}
-            {% include projects_hrz.html %}
+            {% if project.show %}
+              {% include projects_hrz.html %}
+            {%endif%}
           {% endfor %}
           </div>
         </div>
       {% else %}
         <div class="grid">
           {% for project in sorted_projects %}
-            {% include projects.html %}
+            {% if project.show%}
+              {% include projects.html %}
+            {%endif%}
           {% endfor %}
         </div>
       {% endif %}
@@ -40,14 +45,18 @@ horizontal: true
       <div class="container">
         <div class="row row-cols-2">
         {% for project in sorted_projects %}
-          {% include projects_horizontal.html %}
+          {% if project.show %}
+              {% include projects_hrz.html %}
+            {%endif%}
         {% endfor %}
         </div>
       </div>
     {% else %}
       <div class="grid">
         {% for project in sorted_projects %}
-          {% include projects.html %}
+          {% if project.show%}
+              {% include projects.html %}
+            {%endif%}
         {% endfor %}
       </div>
     {% endif %}

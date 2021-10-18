@@ -1,12 +1,14 @@
 ---
 layout: page
 title: SiFi-CC
-description: a project with a background image
-img: /assets/img/12.jpg
-importance: 2
-category: research
+description: on-line monitoring of dose distribution in proton therapy using heavy scintillating fibers
+img: /assets/img/logo_SiFi_CC.jpg
+# importance: 2
+# category: research
+redirect: https://bragg.if.uj.edu.pl/gccbwiki/index.php/Main_Page
+show: true
 ---
-
+<!-- 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
 Make your photos 1/3, 2/3, or full width.
@@ -74,5 +76,5 @@ Here's the code for the last row of images above:
     <div class="col-sm-4 mt-3 mt-md-0">
         <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
-</div>
+</div> -->
 ```
