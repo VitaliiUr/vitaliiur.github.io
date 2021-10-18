@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Traveling-wave reactor
-description: a project with a background image
-img: /assets/img/3.jpg
+title: project 4
+description: another without an image
+img:
 importance: 3
-category: research
+category: fun
 ---
 
 Every project has a beautiful feature showcase page.
