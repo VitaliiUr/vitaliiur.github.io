@@ -37,4 +37,5 @@ $code-bg-color-light:     rgba($purple-color, 0.05);
 $code-bg-color-dark:      #2c2c2c !default;
 
 
-$mypurple-color: #bf2aff !default; 
+$mypurple-color: darken(#bf2aff, 10%) !default;
+$light-mypurple-color:  lighten($mypurple-color, 25%); 

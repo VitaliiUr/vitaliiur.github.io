@@ -8,10 +8,14 @@ category: 21/22Z
 show: true
 ---
 
-<!-- - [Zestaw 1](#zestaw-1) -->
+- [Organizacja](#organizacja)
+- [Zestaw 1](#zestaw-1)
+    - [Generator liczb losowych](#generator-liczb-losowych)
+    - [Ruina gracza](#ruina-gracza)
 <!-- - [Zestaw 2](#zestaw-2) -->
 
 ---
+### Organizacja
 
 Zajęcia są prowadzonę w sali `G-1-08` we wtorki `od 10:00 do 13:10`.
 Ćwiczenia są na przemian z wykładem, proszę sprawdzać aktualne informacje o
@@ -31,11 +35,11 @@ Zadania zaliczane są podczas trwania zajęć, wystarczy zademonstrować działa
 i obecnośc na zajęciach () -->
 ---
 
-### **Zestaw 1**
+### Zestaw 1
 
 [Slajdy](/assets/teaching/2021_winter/1_Urbanevych_2021.pdf){:target="_blank"}
 
-##### **Generator liczb losowych**
+##### Generator liczb losowych
 
 - **Problem A1** *(Obowiązkowe)*
   1. Implementacja generatoru liczb losowych z
@@ -57,7 +61,7 @@ $$
   
 
 
-##### **Ruina gracza**
+##### Ruina gracza
 Ruina gracza dla 2 graczy: gracz **A** z kapitalem początkowym **a** i
 gracz **B** z kapitalem początkowym **b**.
 Po każdej rozgrywce wygrywający gracz otrzymuje jedną jednostkę kapitału od przegranego. Nie ma remisów.
