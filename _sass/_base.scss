@@ -14,9 +14,17 @@ a, table.table a {
     color: var(--global-theme-color);
     text-decoration: underline;
   }
-  &:hover:after {
+  &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+}
+
+blockquote {
+  background: var(--global-bg-color);
+  border-left: 2px solid var(--global-theme-color);
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  font-size: 1.2rem;
 }
 
 // Math
@@ -50,7 +58,6 @@ a, table.table a {
     margin-bottom: 5px;
     margin-top: 5px;
     font-family: monospace;
-    font-size: 1.2rem;
     p {
       display: inline-block;
       margin: 0;
@@ -87,6 +94,22 @@ a, table.table a {
   border-bottom: 1px solid $grey-color-light;
   background-color: var(--global-bg-color);
   opacity: 0.95;
+}
+.navbar .dropdown-menu {
+  background-color: var(--global-bg-color);
+  a:not(.active) {
+    color: var(--global-text-color);
+  }
+  a:hover {
+    color: var(--global-hover-color);
+  }
+}
+.dropdown-item {
+  color: var(--global-text-color);
+    &:hover {
+      color: var(--global-hover-color);
+      background-color: var(--global-bg-color);
+    }
 }
 .navbar.navbar-light {
   a {
@@ -220,7 +243,7 @@ footer.fixed-bottom {
 
 footer.sticky-bottom {
   border-top: 1px solid $grey-color-light;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 40px;
   font-size: 0.9rem;
 }
@@ -295,13 +318,28 @@ footer.sticky-bottom {
 // Projects
 
 .projects {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      .card-title {
+        color: var(--global-theme-color);
+      }
+    }
+  }
+
+  .card {
+    img {
+      width: 100%;
+    }
+    .card-title {
+      color: $black-color;
+    }
+  }
+
   .card-item {
     width: auto;
     margin-bottom: 10px;
-
-    a {
-      text-decoration: none;
-    }
 
     .row {
       display: flex;
@@ -321,24 +359,6 @@ footer.sticky-bottom {
   .grid-item {
     width: 250px;
     margin-bottom: 10px;
-
-    a {
-      color: black;
-      text-decoration: none;
-
-      &:hover {
-        color: var(--global-theme-color);
-      }
-    }
-
-    .card {
-      img {
-        width: 100%;
-      }
-      .card-title {
-        color: $black-color;
-      }
-    }
   }
 
   h2.category {
@@ -369,20 +389,23 @@ footer.sticky-bottom {
     }
 
     .card {
-      background-color: --global-bg-color;
+      background-color: var(--global-code-bg-color);
       img {
         width: 100%;
       }
       .card-title {
-        color: $black-color;
+        color: var(--global-text-color);
+      }
+      .card-text {
+        color: var(--global-text-color-light);
       }
     }
   }
 
 
   h2.category {
-    color: $grey-color-light;
-    border-bottom: 1px solid $grey-color-light;
+    color: var(--global-footer-bg-color);
+    border-bottom: 1px solid var(--global-footer-text-color);
     padding-top: 0.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -409,15 +432,15 @@ footer.sticky-bottom {
     }
   }
   h2.year {
-    color: $grey-color-light;
-    border-top: 1px solid $grey-color-light;
+    color: var(--global-text-color-light);
+    border-top: 1px solid var(--global-footer-text-color);
     padding-top: 1rem;
     margin-top: 2rem;
     margin-bottom: -2rem;
     text-align: right;
   }
   h2.group {
-    color: $code-bg-color-dark;
+    color: var(--global-text-color);
     border-top: 1px solid $grey-color-light;
     padding-top: 1rem;
     margin-top: 2rem;
