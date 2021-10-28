@@ -32,6 +32,7 @@ social: true  # includes social icons at the bottom of the page
 #### Teaching 2021/2022
 
 * [Metody statystyczne (ćwiczenia)](/teaching/2021-metody-statystyczne/)
+* [Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b>](/teaching/2021-metody-statystyczne/)
 
 <!-- #### What you can find here
 

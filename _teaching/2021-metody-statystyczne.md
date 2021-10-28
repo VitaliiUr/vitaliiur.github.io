@@ -3,7 +3,7 @@ layout: page
 title: Metody statystyczne (ćwiczenia)
 description: WFAIS.IF-XO323.0  
 img: /assets/img/matrix.jpg
-# importance: 3
+importance: 3
 category: 21/22Z
 show: true
 ---
