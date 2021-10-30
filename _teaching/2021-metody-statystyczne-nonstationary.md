@@ -6,6 +6,7 @@ img: /assets/img/matrix_inv.jpg
 importance: 2
 category: 21/22Z
 show: true
+show_title: true
 ---
 
 <!-- no toc --> 

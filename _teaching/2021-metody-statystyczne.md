@@ -6,6 +6,7 @@ img: /assets/img/matrix.jpg
 importance: 1
 category: 21/22Z
 show: true
+show_title: true
 ---
 <!-- no toc --> 
 - [Organizacja](#organizacja)
