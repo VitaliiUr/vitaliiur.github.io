@@ -1,13 +1,14 @@
+
 ##### Generator liczb losowych
 
-- **Problem A1** 
+- **Problem A1** *(Obowiązkowe)*
   1. Implementacja generatoru liczb losowych z
     [rozkładu normalnego](https://pl.wikipedia.org/wiki/Rozk%C5%82ad_normalny){:target="_blank"} 
     $$N(0,1)$$ metodą polarną
   2. Narysowanie histogramu i porównanie ze wzorem analitycznym
   3. Obliczyć eksperymentalne wartości średniej oraz wariancji
 
-- **Problem A2** 
+- **Problem A2** *(Obowiązkowe)*
   1. Implementacja generatoru liczb losowych z [rozkładu Cauchy'ego](https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Cauchy%E2%80%99ego){:target="_blank"} $$C(y_0,\gamma)$$, metodą odwróconej dystrybuanty:
 $$
 \begin{equation}
@@ -34,7 +35,7 @@ dla róźnych zadań ten parametr może być róźnym
 (generalnie im więcej tym lepiej, może być wybrany tak,
 żeby symulacją nie trwała za długo).
 
-  - **Problem B**   
+  - **Problem B** *(Obowiązkowe)*  
   **a** = 50, **b** = 50  
   Symulacja **N** gier z róźnymi
   wartościami $$p_A$$. Dla każdej wartości obliczyć prawdopodobieństwo
@@ -44,7 +45,7 @@ dla róźnych zadań ten parametr może być róźnym
   2. Porównanie z wynikiem teoretycznym
   3. Spróbować dla róźnych wartościej **a** i **b**
 
-- **Problem C**     
+- **Problem C**  *(Obowiązkowe)*   
 **a** + **b** = 100;  
 $$p_A = \frac{1}{2}$$  
 Symulacja **N** gier z róźnymi
@@ -55,7 +56,7 @@ Symulacja **N** gier z róźnymi
   2. Porównanie z wynikiem teoretycznym
   3. Spróbować dla róźnych wartościej $$p_A$$
 
-- **Problem D**     
+- **Problem D** *(Obowiązkowe)*    
 **L** - liczba rozgrywek do ukończenia gry  
 $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$;  
 **a** = **b**=50  
@@ -64,7 +65,7 @@ Symulacja **N** gier, dla każdej gry obliczyć iłość rozgrywek.
   1.  Histogram prawdopodobieństwa P(L) - liczby rozgrywek do ukończenia gry
   2.  Wyliczyć średnią długość rozgrywki 
 
-- **Problem E**   
+- **Problem E** *(Obowiązkowe)*  
 **N** - wybrana wartość symulowanych gier  
 Symulacja **N** gier z róźnymi wartościami $$p_A$$.
 Dla każdej wartości $$p_A$$ obliczyć maksymalną iłość rozgrywek.
@@ -77,16 +78,16 @@ $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$
 Symylacja **n** rozgrywek **N** razy.
   1. Histogram prawdopodobieństwa **P(M)** - że gracz **A** ma kapitał **M** po **n** rozgrywkach
 
-- **Problem G**   
+- **Problem G** *(Obowiązkowe)*  
   Symulacja kilku gier (do 10)  
   spróbować dla różnych wartościej $$p_A$$
   1. Wykres trajektorii **liczby wygranych**  jednego z graczy jako zależność od numera rozgrywki
   2. Wykres trajektorii **kapitału** jednego z graczy jako zależność od numera rozgrywki  
 
 
-- **Problem H**  
+- **Problem H** *(Obowiązkowe częściowo)*  
   Problemy B, C, D, H dla kilku, np. pięciu,  graczy.  
   Różne kombinacje wartościej $$p_i$$ - prawdopodobieństw
   wygranej dla gracza numer $$i$$.  
   $$a_i$$ = 20 - kapitały początkowe graczej
-  (lub spróbować inne wartości).  
+  (lub spróbować inne wartości).
