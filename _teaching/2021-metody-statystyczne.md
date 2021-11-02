@@ -14,9 +14,10 @@ show_title: true
     - [Generator liczb losowych](#generator-liczb-losowych)
     - [Ruina gracza](#ruina-gracza)
 <!-- - [Zestaw 2](#zestaw-2) -->
+    <!-- - [Symulacja procesu Markova](#symulacja-procesu-markova) -->
 
 ---
-### Organizacja
+### **Organizacja**
 
 Zajęcia są prowadzonę w sali `G-1-08` we wtorki `od 10:00 do 13:10`.
 Ćwiczenia są na przemian z wykładem, proszę sprawdzać aktualne informacje o
@@ -36,7 +37,7 @@ Zadania zaliczane są podczas trwania zajęć, wystarczy zademonstrować działa
 i obecnośc na zajęciach () -->
 ---
 
-### Zestaw 1
+### **Zestaw 1**
 
 [Slajdy](/_teaching/2021_metody_statystyczne/1_Urbanevych_2021.pdf){:target="_blank"}
 
@@ -44,4 +45,6 @@ i obecnośc na zajęciach () -->
 
 ---
 
-<!-- ### **Zestaw 2** -->
+### **Zestaw 2**
+
+---

@@ -18,7 +18,7 @@ show_title: true
 
 ---
 
-### Organizacja
+### **Organizacja**
 
 Zajęcia będą prowadzone zdalnie z wykorzystaniem `MS TEAMS`.
 Przed każdym spotkaniem studenci otrzymają zestaw zadań (będzie on udostępniany na tej stronie). 
@@ -32,7 +32,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ---
 
-### Zestaw 1
+### **Zestaw 1**
 
 *06.11.2021*
 
