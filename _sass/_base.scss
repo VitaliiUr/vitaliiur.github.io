@@ -251,10 +251,18 @@ footer.fixed-bottom {
 }
 
 footer.sticky-bottom {
-  border-top: 1px solid $grey-color-light;
+  border-top: 1px solid var(--horizontal_rule);
+  background-color: var(--global-code-bg-color);
   padding-top: 20px;
   padding-bottom: 40px;
   font-size: 0.9rem;
+    a {
+    color: var(--global-hover-color);
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
 }
 
 
