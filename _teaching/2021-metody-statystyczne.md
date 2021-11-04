@@ -47,6 +47,6 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 2**
 
-{% include_relative /2021_metody_statystyczne/Zestaw2.md %}
+<!-- {% include_relative /2021_metody_statystyczne/Zestaw2.md %} -->
 
 ---
