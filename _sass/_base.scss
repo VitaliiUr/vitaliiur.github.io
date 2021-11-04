@@ -100,8 +100,8 @@ blockquote {
 
 .navbar {
   box-shadow: none;
-  border-bottom: 1px solid $grey-color-light;
-  background-color: var(--global-bg-color);
+  border-bottom: 1px solid var(--horizontal_rule);
+  background-color: var(--global-code-bg-color);
   opacity: 0.95;
 }
 .navbar .dropdown-menu {
