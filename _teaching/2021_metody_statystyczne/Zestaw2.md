@@ -1,9 +1,18 @@
 #### Symulacja procesu Markova
 
+<!-- ![dsfsf](/teaching/2021_metody_statystyczne/diagram.png) -->
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align='center'>
+        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2021_metody_statystyczne/diagram.png" width="400">
+    </div>
+</div>
+
 
 <!-- Mamy process Markova z diagramem powyżej.  -->
-Mamy 2 użytkownika które mogą być zalogowane lub niezalogowane do komputera.
-Prawdopodobieństwo zalogowania jest $$P_{zalogowania} = 0.2$$, wylogowania - 
+Mamy 2 użytkownika i każdy z nich może być zalogowanym lub niezalogowany do komputera, 
+niezależnie od drugiego.
+Prawdopodobieństwo zalogowania dla użytkownika jest $$P_{zalogowania} = 0.2$$, wylogowania - 
 $$P_{wylogowania} = 0.5$$. W takim przypadku mamy trzy możliwych stany:
 zalogowanę są 0, 1 lub 2 użytkowniki. Na diagramie powyżej x - ilość zalogowanych
 użytkowników i strzałki określają przejście z jednego stanu do innego 
