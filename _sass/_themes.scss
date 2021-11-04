@@ -27,11 +27,10 @@
 }
 
 html[data-theme='dark'] {
-  --global-bg-color: #{$grey-color-dark};
+  --global-bg-color: #{$darkmode_bg-color};
   --global-code-bg-color: #{$code-bg-color-dark};
-  // --global-text-color: #{$grey-color-light};
   --global-text-color: #{$darkmode-text-color};
-  --global-text-color-light: #{$grey-color};
+  --global-text-color-light: #{$darkmode-text-color-light};
   --global-theme-color: #{$cyan-color};
   --global-hover-color: #{$light-cyan-color};
   --global-footer-bg-color: #{$grey-color-light};
