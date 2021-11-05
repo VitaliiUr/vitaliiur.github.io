@@ -39,7 +39,7 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 1**
 
-[Slajdy](/_teaching/2021_metody_statystyczne/1_Urbanevych_2021.pdf){:target="_blank"}
+[Slajdy](/teaching/2021_metody_statystyczne/1_Urbanevych_2021.pdf){:target="_blank"}
 
 {% include_relative /2021_metody_statystyczne/Zestaw1.md %}
 
@@ -47,6 +47,5 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 2**
 
-<!-- {% include_relative /2021_metody_statystyczne/Zestaw2.md %} -->
 
 ---
