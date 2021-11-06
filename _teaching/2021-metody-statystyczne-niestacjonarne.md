@@ -36,8 +36,8 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 *06.11.2021*
 
-**Grupa 1**: 11:15 - 13:30  
-**Grupa 2**: 18:00 - 20:15
+**Grupa 2**: 11:15 - 13:30  
+**Grupa 1**: 15:30 - 17:45
 
 [Slajdy](/teaching/2021_metody_statystyczne/1_Urbanevych_2021.pdf){:target="_blank"}
 
