@@ -71,7 +71,7 @@ Symulacja **N** gier z różnymi wartościami $$p_A$$.
 Dla każdej wartości $$p_A$$ obliczyć maksymalną ilość rozgrywek.
   1. Wykres $$L_{max}(p_A)$$ - maksymalna długość rozgrywek $$L_{max}$$ przy **N** rozgrywkach jako zależność od wartości $$p_A$$
 
-- **Problem F** *(Nie obowiązkowe)*  
+- **Problem F** 
 **n** = 2,10,20,...,100  
 **a** = **b** = 50  
 $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$  
@@ -85,12 +85,13 @@ Symulacja **n** rozgrywek **N** razy.
   2. Wykres trajektorii **kapitału** jednego z graczy jako zależność od numera rozgrywki  
 
 
-- **Problem H** *(Obowiązkowe częściowo)*  
+- **Problem H**
   Problemy B, C, D, H dla kilku, np. pięciu,  graczy.  
   Różne kombinacje wartości $$p_i$$ - prawdopodobieństw
   wygranej dla gracza numer $$i$$.  
   $$a_i$$ = 20 - kapitały początkowe gracze
   (lub spróbować inne wartości).
+  *(jeden punkt za każdy problem)*
 
 [normalny_wiki]: https://pl.wikipedia.org/wiki/Rozk%C5%82ad_normalny "Rozkład normalny"
 [cauchy_wiki]: https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Cauchy%E2%80%99ego "Rozkład Cauchy'ego"
