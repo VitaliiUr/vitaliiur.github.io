@@ -1,14 +1,14 @@
 
 #### Generator liczb losowych
 
-- **Problem A1** *(Obowiązkowe)*
+- **Problem A1**
   1. Implementacja generatora liczb losowych z
     [rozkładu normalnego][normalny_wiki] 
     $$N(0,1)$$ metodą polarną
   2. Narysowanie histogramu i porównanie ze wzorem analitycznym
   3. Obliczyć eksperymentalne wartości średniej oraz wariancji
 
-- **Problem A2** *(Obowiązkowe)*
+- **Problem A2**
   1. Implementacja generatora liczb losowych z [rozkładu Cauchy'ego][cauchy_wiki] $$C(y_0,\gamma)$$, metodą odwróconej dystrybuanty:
 $$
 \begin{equation}
@@ -35,7 +35,7 @@ dla różnych zadań ten parametr może być różnym
 (generalnie im więcej tym lepiej, może być wybrany tak,
 żeby symulacją nie trwała za długo).
 
-  - **Problem B** *(Obowiązkowe)*  
+  - **Problem B**  
   **a** = 50, **b** = 50  
   Symulacja **N** gier z różnymi
   wartościami $$p_A$$. Dla każdej wartości obliczyć prawdopodobieństwo
@@ -45,7 +45,7 @@ dla różnych zadań ten parametr może być różnym
   2. Porównanie z wynikiem teoretycznym
   3. Spróbować dla różnych wartości **a** i **b**
 
-- **Problem C**  *(Obowiązkowe)*   
+- **Problem C**    
 **a** + **b** = 100;  
 $$p_A = \frac{1}{2}$$  
 Symulacja **N** gier z różnymi
@@ -56,7 +56,7 @@ Symulacja **N** gier z różnymi
   2. Porównanie z wynikiem teoretycznym
   3. Spróbować dla różnych wartości $$p_A$$
 
-- **Problem D** *(Obowiązkowe)*    
+- **Problem D**    
 **L** - liczba rozgrywek do ukończenia gry  
 $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$;  
 **a** = **b**=50  
@@ -65,7 +65,7 @@ Symulacja **N** gier, dla każdej gry obliczyć ilość rozgrywek.
   1.  Histogram prawdopodobieństwa P(L) - liczby rozgrywek do ukończenia gry
   2.  Wyliczyć średnią długość rozgrywki 
 
-- **Problem E** *(Obowiązkowe)*  
+- **Problem E**  
 **N** - wybrana wartość symulowanych gier  
 Symulacja **N** gier z różnymi wartościami $$p_A$$.
 Dla każdej wartości $$p_A$$ obliczyć maksymalną ilość rozgrywek.
@@ -78,14 +78,14 @@ $$p_A = \frac{1}{2}, \frac{1}{5}, \frac{4}{5}$$
 Symulacja **n** rozgrywek **N** razy.
   1. Histogram prawdopodobieństwa **P(M)** - że gracz **A** ma kapitał **M** po **n** rozgrywkach
 
-- **Problem G** *(Obowiązkowe)*  
+- **Problem G**  
   Symulacja kilku gier (do 10)  
   spróbować dla różnych wartości $$p_A$$
   1. Wykres trajektorii **liczby wygranych**  jednego z graczy jako zależność od numera rozgrywki
   2. Wykres trajektorii **kapitału** jednego z graczy jako zależność od numera rozgrywki  
 
 
-- **Problem H**  
+- **Problem H** *(Obowiązkowe częściowo)*  
   Problemy B, C, D, H dla kilku, np. pięciu,  graczy.  
   Różne kombinacje wartości $$p_i$$ - prawdopodobieństw
   wygranej dla gracza numer $$i$$.  
