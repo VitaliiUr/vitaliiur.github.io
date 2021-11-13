@@ -14,7 +14,9 @@ show_title: true
 - [Zestaw 1](#zestaw-1)
     - [Generator liczb losowych](#generator-liczb-losowych)
     - [Ruina gracza](#ruina-gracza)
-<!-- - [Zestaw 2](#zestaw-2) -->
+- [Zestaw 2](#zestaw-2)
+    - [Symulacja procesu Markova](#symulacja-procesu-markova)
+    - [Process Poissona](#process-poissona)
 
 ---
 
@@ -45,13 +47,18 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ---
 
-<!-- ### **Zestaw 2** -->
+### **Zestaw 2**
 
 *21.11.2021*
 
 **Grupa 2**: 15:45 - 18:00  
 **Grupa 1**: 18:15 - 20:30  
  
+
+[Slajdy](/teaching/2021_metody_statystyczne_niestacjonarne/2_Urbanevych_2021.pdf){:target="_blank"}
+
+{% include_relative /2021_metody_statystyczne_niestacjonarne/Zestaw2.md %}
+
 ---
 
 <!-- ### **Zestaw 3** -->

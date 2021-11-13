@@ -13,8 +13,8 @@ show_title: true
 - [Zestaw 1](#zestaw-1)
     - [Generator liczb losowych](#generator-liczb-losowych)
     - [Ruina gracza](#ruina-gracza)
-<!-- - [Zestaw 2](#zestaw-2) -->
-    <!-- - [Symulacja procesu Markova](#symulacja-procesu-markova) -->
+- [Zestaw 2](#zestaw-2)
+    - [Symulacja procesu Markova](#symulacja-procesu-markova)
 
 ---
 ### **Organizacja**
@@ -39,6 +39,8 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 1**
 
+*19.10.2021 - 26.10.2021*
+
 [Slajdy](/teaching/2021_metody_statystyczne/1_Urbanevych_2021.pdf){:target="_blank"}
 
 {% include_relative /2021_metody_statystyczne/Zestaw1.md %}
@@ -47,5 +49,22 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 2**
 
+*16.11.2021*
+
+[Slajdy](/teaching/2021_metody_statystyczne/2p1_Urbanevych_2021.pdf){:target="_blank"}
+
+{% include_relative /2021_metody_statystyczne/Zestaw2_Markov.md %}
+
 
 ---
+
+<!-- ### **Zestaw 3**
+
+*14.12.2021*
+
+[Slajdy](/teaching/2021_metody_statystyczne/2p2_Urbanevych_2021.pdf){:target="_blank"}
+{% comment %}
+{% include_relative /2021_metody_statystyczne/Zestaw2_Poisson.md %}
+{% endcomment %}
+
+--- -->

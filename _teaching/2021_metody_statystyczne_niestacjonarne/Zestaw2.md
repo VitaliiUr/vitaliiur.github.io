@@ -53,11 +53,11 @@ $$
   100 użytkowników &#8594; trudno jest obliczyć macierz prawdopodobieństw  
   $$x=0,1,2,...,100$$;  
   $$P_{logowania} = 0.2$$, $$P_{wylogowania} = 0.5$$  
-  1. Wykonujemy symulację trajektorii
+  1. Wykonujemy symulację trajektorii (zaczynamy z dowolnego węzła $$x$$)
   2. Ile wynosi $$\pi^{exp}_i$$ dla $$i=0,1,\cdots,100$$?
   3. Wykresy zbieżności $$\pi^{exp}_i = \frac{N_i}{N}$$ jako zależność od $$N$$ 
         dla kilku $$i$$ (np dla pięciu największych wartości $$\pi$$)
-  4. Wykres końcowych wartości dla wszystkich $$\pi$$
+  4. Wykres końcowych wartości dla wszystkich $$\pi^{exp}_i$$
    
 - **Problem D**  
    Podobna symulacja jak w C, tylko 
@@ -74,7 +74,7 @@ $$
   
   $$N(t)$$ - ilość zdarzeń, które wystąpiły do chwili $$t$$, $$N(0)=0$$  
   Taki proces nazywa się [procesem Poissona][poisson_wiki] o intensywności $$\lambda$$  
-  $$N(t)$$ ma rozkład Poissona $$P (N(t)=k) = \frac{(\lambda t)^k}{k!}e^{-\lambda t}$$, z parametrem $$\lambda t$$ 
+  $$N(t)$$ ma rozkład Poissona $$P (N(t)=k) = \frac{(\lambda t)^k}{k!}e^{-\lambda t}$$, z parametrem $$\lambda \cdot t$$ 
 
 - **Problem E**  
   Symulacja procesu Poissona
@@ -83,8 +83,8 @@ $$
   1. Zaimplementować symulację pojawienia zdarzeń
   2. Dla każdej wartości t:
     - otrzymać rozkład prawdopodobieństwa ilości zdarzeń
-    - porównać z rozkłądem Poissona z parametrem $$\lambda t$$ 
-    - sprawdzić że wartość średnia jest $$\lambda t$$
+    - porównać z rozkłądem Poissona z parametrem $$\lambda \cdot t$$ 
+    - sprawdzić że wartość średnia jest $$\lambda \cdot t$$
 
 - **Problem F**  
   Mamy symulację zdarzeń jak w E  
@@ -93,8 +93,8 @@ $$
   Należność do jednej z grup jest losowane i prawdopodobieństwa 
   należności do grup: $$p_1 = 0.2$$, $$p_2 = 0.5$$, $$p_3 = 0.3$$ ($$p_1+p_2+p_3=1$$)
   1. Sprawdzić że rozkład prawdopodobieństwa zdarzeń grupy $$i$$ 
-  jest rozkładem Poissona z parametrem $$\lambda t p_i$$
-  2. Sprawdzić że wartość średnia dla takiego rozkładu jest $$\lambda t p_i$$
+  jest rozkładem Poissona z parametrem $$\lambda \cdot t \cdot p_i$$
+  2. Sprawdzić że wartość średnia dla takiego rozkładu jest $$\lambda \cdot t \cdot p_i$$
 
 
 [poisson_wiki]: https://pl.wikipedia.org/wiki/Proces_Poissona "Process Poissona"
