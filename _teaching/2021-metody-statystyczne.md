@@ -49,7 +49,7 @@ i obecnośc na zajęciach () -->
 
 ### **Zestaw 2**
 
-*16.11.2021*
+*23.11.2021*
 
 [Slajdy](/teaching/2021_metody_statystyczne/2p1_Urbanevych_2021.pdf){:target="_blank"}
 
