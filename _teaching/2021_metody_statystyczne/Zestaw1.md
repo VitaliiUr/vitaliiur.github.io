@@ -86,7 +86,7 @@ Symulacja **n** rozgrywek **N** razy.
 
 
 - **Problem H**  
-  Problemy B, C, D, H dla kilku, np. pięciu,  graczy.  
+  Problemy B, C, D, G dla kilku, np. pięciu,  graczy.  
   Różne kombinacje wartości $$p_i$$ - prawdopodobieństw
   wygranej dla gracza numer $$i$$.  
   $$a_i$$ = 20 - kapitały początkowe gracze
