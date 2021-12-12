@@ -21,7 +21,7 @@
     - sprawdzić że wartość średnia jest $$\lambda \cdot t$$
 
 - **Problem B**  
-  Mamy symulację zdarzeń jak w E  
+  Mamy symulację zdarzeń jak w **A**  
   $$\lambda = 1$$; $$t = 1,10,20,90$$  
   Każde zdarzenie może należeć do jednej z trzech grup: 1,2,3  
   Należność do jednej z grup jest losowane i prawdopodobieństwa 
