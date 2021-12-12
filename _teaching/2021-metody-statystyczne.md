@@ -15,6 +15,8 @@ show_title: true
     - [Ruina gracza](#ruina-gracza)
 - [Zestaw 2](#zestaw-2)
     - [Symulacja procesu Markova](#symulacja-procesu-markova)
+- [Zestaw 3](#zestaw-3)
+    - [Process Poissona](#process-poissona)
 
 ---
 ### **Organizacja**
@@ -58,13 +60,12 @@ i obecnośc na zajęciach () -->
 
 ---
 
-<!-- ### **Zestaw 3**
+### **Zestaw 3**
 
 *14.12.2021*
 
 [Slajdy](/teaching/2021_metody_statystyczne/2p2_Urbanevych_2021.pdf){:target="_blank"}
-{% comment %}
-{% include_relative /2021_metody_statystyczne/Zestaw2_Poisson.md %}
-{% endcomment %}
 
---- -->
+{% include_relative /2021_metody_statystyczne/Zestaw2_Poisson.md %}
+
+---
