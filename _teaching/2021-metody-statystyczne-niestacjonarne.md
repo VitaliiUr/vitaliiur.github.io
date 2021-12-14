@@ -67,11 +67,12 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 *19.12.2021*
 
 **Grupa 2**: 08:00 - 09:30  
-**Grupa 1**: 10:00 - 11:30  
+**Grupa 1**: 10:00 - 11:30
+
+
+[Slajdy](/teaching/2021_metody_statystyczne_niestacjonarne/3_Urbanevych_2021.pdf){:target="_blank"}
  
-{% comment %}
 {% include_relative /2021_metody_statystyczne_niestacjonarne/Zestaw3.md %}
-{% endcomment %}
 
 ---
 
