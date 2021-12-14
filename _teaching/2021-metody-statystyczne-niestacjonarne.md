@@ -18,6 +18,7 @@ show_title: true
     - [Symulacja procesu Markova](#symulacja-procesu-markova)
     - [Process Poissona](#process-poissona)
 - [Zestaw 3](#zestaw-3)
+    - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
 
 ---
 

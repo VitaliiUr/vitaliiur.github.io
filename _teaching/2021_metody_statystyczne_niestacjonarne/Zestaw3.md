@@ -1,8 +1,8 @@
-#### Symulacja procesu k    olejkowego
+#### Symulacja procesu kolejkowego
 
 <div class="row mt-3" style="margin-bottom: 18px">
     <div class="col-sm mt-3 mt-md-0" align='center'>
-        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2021_metody_statystyczne/server.png" width="400">
+        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2021_metody_statystyczne/server.png" width="600">
     </div>
 </div>
 

@@ -17,6 +17,7 @@ show_title: true
     - [Symulacja procesu Markova](#symulacja-procesu-markova)
 - [Zestaw 3](#zestaw-3)
     - [Process Poissona](#process-poissona)
+- [Zestaw 4](#zestaw-4)
 
 ---
 ### **Organizacja**
@@ -67,5 +68,13 @@ i obecnośc na zajęciach () -->
 [Slajdy](/teaching/2021_metody_statystyczne/2p2_Urbanevych_2021.pdf){:target="_blank"}
 
 {% include_relative /2021_metody_statystyczne/Zestaw2_Poisson.md %}
+
+---
+
+### **Zestaw 4**
+
+*21.12.2021*
+
+[Slajdy](/teaching/2021_metody_statystyczne/3_Urbanevych_2021.pdf){:target="_blank"}
 
 ---
