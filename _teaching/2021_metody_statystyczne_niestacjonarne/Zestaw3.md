@@ -9,10 +9,17 @@
 Zaimplementowanie symulacji procesu kolejkowego.
 
 - **Problem A**  
-    Symulacja procesu kolejkowego dla 10 zadań dla $$\lambda_A = 1/20$$, $$\lambda_S = 1/15$$.
+    Symulacja procesu kolejkowego dla 10 zadań dla $$\lambda_A = 1/30$$, $$\lambda_S = 1/20$$.
     Zrobić wykresy:
     1. Liczba zadań w kolejce w zależności od czasu.
     2. Czas oczekiwania na wykonanie w zależności od czasu.
-    3. Powtórzyć dla $$\lambda_A = 1/20$$, $$\lambda_S = 1/50$$
+    3. Liczba wykonanych w zależności od czasu.
+    4. Powtórzyć dla $$\lambda_A = 1/30$$, $$\lambda_S = 1/50$$
 
 - **Problem B**  
+    1. Sprawdzić prawo Little'a: 
+    $$E(R) \lambda_A = E(n)$$  
+    E(R) - średni czas spędzony przez zadanie w systemie ($$R_i = D_i - A_i$$)  
+    E(n) - średnia ilość zadań w kolejcę  
+    2. $$\lambda_A = 1/30$$, $$\lambda_S = 1/20$$\\
+    3. Symulacja dla 1000 zadań
