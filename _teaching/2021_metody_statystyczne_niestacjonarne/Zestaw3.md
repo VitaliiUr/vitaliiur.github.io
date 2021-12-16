@@ -9,24 +9,25 @@
 Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
 
 - **Problem A**  
-    Symulacja procesu kolejkowego dla 10 zadań dla $$\lambda_A = 1/30$$, $$\lambda_S = 1/20$$.  
+    Symulacja procesu kolejkowego dla 10 zadań dla $$\lambda_A = 2$$, $$\lambda_S = 2.5$$.  
     Zrobić wykresy:
     1. Liczba zadań w kolejce w zależności od czasu.
     2. Czas oczekiwania na wykonanie w zależności od czasu.
     3. Liczba wykonanych w zależności od czasu.
-    4. Powtórzyć dla $$\lambda_A = 1/30$$, $$\lambda_S = 1/50$$
+    4. Powtórzyć dla $$\lambda_A = 2$$, $$\lambda_S = 1.5$$
 
 - **Problem B**  
     1. Sprawdzić prawo Little'a: 
     $$E(R) \lambda_A = E(n)$$  
     E(R) - średni czas spędzony przez zadanie w systemie ($$R_i = D_i - A_i$$)  
     E(n) - średnia ilość zadań w kolejcę  
-    2. $$\lambda_A = 1/30$$, $$\lambda_S = 1/20$$
+    2. $$\lambda_A = 2$$, $$\lambda_S = 3$$
     3. Symulacja dla 1000 zadań
+    4. Sprawdzić również dla  $$\lambda_A = 2$$, $$\lambda_S = 5$$
 
 - **Problem C**  
     1. Zaobserwować zatykanie systemu
-    2. $$\lambda_A = 1/30$$, $$\lambda_S = 1/100$$
+    2. $$\lambda_A = 15$$, $$\lambda_S = 8$$
     3. **n=1000** zadań
     4. Wykresy jak w **A**
     5. Pomyśleć co mogą znaczyć następne wzory:  
@@ -44,3 +45,7 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     2. E(liczba zadań) w zależności od $$\lambda_S$$
     3. E(liczba zadań) w zależności od $$r = \frac{\lambda_A}{\lambda_S}$$
     4. ... to samo dla E(czas oczekiwania)
+
+- **Problem E**  
+   Zrobić graf jak w [poprzednim zestawie](#symulacja-procesu-markova)
+   ale dla 3 użytkowników (dowolną metodą) 
