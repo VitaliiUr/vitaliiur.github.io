@@ -18,6 +18,8 @@ show_title: true
 - [Zestaw 3](#zestaw-3)
     - [Process Poissona](#process-poissona)
 - [Zestaw 4](#zestaw-4)
+    - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
+
 
 ---
 ### **Organizacja**
@@ -76,5 +78,7 @@ i obecnośc na zajęciach () -->
 *21.12.2021*
 
 [Slajdy](/teaching/2021_metody_statystyczne/3_Urbanevych_2021.pdf){:target="_blank"}
+
+{% include_relative /2021_metody_statystyczne/Zestaw3_server.md %}
 
 ---

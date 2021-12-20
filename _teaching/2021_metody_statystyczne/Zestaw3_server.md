@@ -25,6 +25,26 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     3. Symulacja dla 1000 zadań
     4. Sprawdzić również dla  $$\lambda_A = 2$$, $$\lambda_D = 5$$
 
+  <details>
+  <summary>Wskazówka</summary>
+  <blockquote>
+    <ul>
+       <li> Prawo Little'a działa lepiej  w przypadku $\lambda_A <= \lambda_D$<br> </li>
+       <li> Licząc średnią ilość zadań w systemie trzeba brać po uwagę czas.<br> </li>
+           Na przykład mamy w systemie:<br> 
+           <ul>
+                      <li>5 min : 1 zadanie<br>  </li>
+                       <li>10 min : 3 zadania<br> </li> 
+                      <li> 3 min : 4 zadania<br> </li>
+          </ul>
+              W takim razie średnia ilość zadań:
+              $$
+                  E(n) = \frac{5\times1 + 10\times3 + 3\times4}{5 + 10 + 3}
+              $$ 
+      </ul> 
+  </blockquote>
+  </details>
+
 - **Problem C**  
     1. Zaobserwować zatykanie systemu
     2. $$\lambda_A = 15$$, $$\lambda_D = 8$$
@@ -45,7 +65,3 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     2. E(liczba zadań) w zależności od $$\lambda_D$$
     3. E(liczba zadań) w zależności od $$r = \frac{\lambda_A}{\lambda_D}$$
     4. ... to samo dla E(czas oczekiwania)
-
-- **Problem E**  
-   Zrobić graf jak w [poprzednim zestawie](#symulacja-procesu-markova)
-   ale dla 3 użytkowników (dowolną metodą) 
