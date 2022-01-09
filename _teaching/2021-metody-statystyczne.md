@@ -19,6 +19,8 @@ show_title: true
     - [Process Poissona](#process-poissona)
 - [Zestaw 4](#zestaw-4)
     - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
+- [Zestaw 5](#zestaw-5)
+    - [Symulacja procesu kolejkowego (kontynuacja)](#symulacja-procesu-kolejkowego-kontynuacja)
 
 
 ---
@@ -82,3 +84,11 @@ i obecnośc na zajęciach () -->
 {% include_relative /2021_metody_statystyczne/Zestaw3_server.md %}
 
 ---
+
+
+### **Zestaw 5**
+
+*11.01.2022*
+
+
+{% include_relative /2021_metody_statystyczne/Zestaw4.md %}
