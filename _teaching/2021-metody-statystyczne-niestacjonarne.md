@@ -84,6 +84,8 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 08:00 - 13:00  
 **Grupa 1**: 13:30 - 18:30  
  
+#### Kolokwium
+#### Konsultacja / oddanie zadań
 ---
 
 <!-- ### **Reserve** -->
@@ -93,4 +95,6 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 1**: 10:30 - 13:45  
 **Grupa 2**: 14:45 - 18:00
  
+#### Konsultacja / oddanie zadań
+
 ---
