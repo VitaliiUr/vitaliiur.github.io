@@ -19,7 +19,7 @@ jest  $$\frac{t_1}{t_2}$$.
 Potem na serwerze się zostanie tylko jedno zadanie i ono
 zacznie być wykonywanym szybciej.
 To znaczy, że zostało się do obliczenia $$1 - \frac{t_1}{t_2}$$. To już będzie obliczane
-z pełną mocą i zostanie obliczone za $$t_2(1 - \frac{t_1}{t_2}) = t_2 - {t_1$$.
+z pełną mocą i zostanie obliczone za $$t_2(1 - \frac{t_1}{t_2}) = t_2 - t_1$$.
 
 
 Czyli dla pierwszego zadania całkowity czas obliczenia będzie $$2 t_1$$, a
