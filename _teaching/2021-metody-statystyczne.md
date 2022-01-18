@@ -21,7 +21,7 @@ show_title: true
     - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
 - [Zestaw 5](#zestaw-5)
     - [Symulacja procesu kolejkowego (kontynuacja)](#symulacja-procesu-kolejkowego-kontynuacja)
-- [Zestaw 6](#zestaw-5)
+- [Zestaw 6](#zestaw-6)
 
 
 ---
