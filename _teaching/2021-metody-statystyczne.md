@@ -21,6 +21,7 @@ show_title: true
     - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
 - [Zestaw 5](#zestaw-5)
     - [Symulacja procesu kolejkowego (kontynuacja)](#symulacja-procesu-kolejkowego-kontynuacja)
+- [Zestaw 6](#zestaw-5)
 
 
 ---
@@ -92,3 +93,13 @@ i obecnośc na zajęciach () -->
 
 
 {% include_relative /2021_metody_statystyczne/Zestaw4.md %}
+
+---
+
+
+### **Zestaw 6**
+
+*18.01.2022*
+
+
+{% include_relative /2021_metody_statystyczne/Zestaw5.md %}
