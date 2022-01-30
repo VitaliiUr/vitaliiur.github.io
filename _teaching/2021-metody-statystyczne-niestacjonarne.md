@@ -92,8 +92,8 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 *30.01.2022*
 
-**Grupa 1**: 10:30 - 13:45  
-**Grupa 2**: 14:45 - 18:00
+**Grupa 2**: 10:30 - 13:45  
+**Grupa 1**: 14:45 - 18:00
  
 #### Konsultacja / oddanie zadań
 
