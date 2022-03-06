@@ -4,7 +4,7 @@ permalink: /teaching/
 title: teaching
 show_title: false
 # description: Materials for courses you taught. Replace this text with your description.
-nav: true
+nav: false
 horizontal: false
 display_categories: [21/22Z]
 ---
