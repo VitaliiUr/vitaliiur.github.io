@@ -62,8 +62,8 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 <span style="color:#cc00ff"> zjazd zdalny </span>
 
-**Grupa 2**: 10:00 - 13:15  
-**Grupa 1**: 13:30 - 16:45
+**Grupa 2**: 11:00 - 13:15  
+**Grupa 1**: 13:30 - 15:45
 
 
 
