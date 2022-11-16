@@ -29,6 +29,10 @@ social: true  # includes social icons at the bottom of the page
 
 - e-mail: [v.urbanevych@samsung.com](mailto:v.urbanevych@samsung.com)
 
+#### Teaching 2022/2023
+
+* [Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b>](/teaching/2022-metody-statystyczne-niestacjonarne/)
+
 <!-- #### What you can find here
 
 * [My blog](/blog/)

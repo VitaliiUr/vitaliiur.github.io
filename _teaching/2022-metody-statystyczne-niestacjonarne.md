@@ -1,0 +1,91 @@
+---
+layout: page
+title: Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b> 
+description: WFAIS.IF-XO323.z
+img: /assets/img/matrix_inv.jpg
+importance: 2
+category: 22/23Z
+show: true
+show_title: true
+---
+
+<!-- no toc --> 
+- [Organizacja](#organizacja)
+- [Zestaw 1](#zestaw-1)
+    - [Generator liczb losowych](#generator-liczb-losowych)
+    - [Ruina gracza](#ruina-gracza)
+
+<!-- - [Zestaw 2](#zestaw-2)
+    - [Symulacja procesu Markova](#symulacja-procesu-markova)
+    - [Process Poissona](#process-poissona)
+- [Zestaw 3](#zestaw-3)
+    - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego) -->
+
+---
+
+### **Organizacja**
+
+Zajęcia będą prowadzone w sale `G-1-03` (zdalnie z wykorzystaniem `MS TEAMS` - proszę śledzić komunikaty w tej sprawie).
+Na każdym spotkaniu studenci otrzymają zestaw zadań (będzie on udostępniany na tej stronie). 
+
+
+Zadania zaliczane są podczas trwania zajęć, wystarczy zademonstrować działanie odpowiedniego programu oraz krótko o nim opowiedzieć. Za każde zaliczone zadanie student dostaje `1 punkt`.
+Studenci mają również możliwość dorobić zadania w domu, ale ono muszą być oddane nie później niż na kolejnych zajęciach. Za każde zadanie oddane po ukończeniu odpowiednego terminu, studenci dostają `0.5 punkta`.
+Do wykonania zadania każdy może wybrać dowolny język lub środowisko programistyczne, jednak zabronione jest używanie jakichkolwiek bibliotek i funkcji statystycznych lub pomocniczych.
+
+Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. Jednak liczba punktów wpłynie na ocenę końcową, więc im więcej zadań zastanie wykonane, tym lepiej. Konkretna skala ocen będzie podana przed końcem semestru.
+
+---
+
+### **Zestaw 1**
+
+*20.11.2022*
+
+**Grupa 2**: 08:00 - 10:15  
+**Grupa 1**: 10:30 - 12:45
+
+[Slajdy](/teaching/2022_metody_statystyczne_niestacjonarne/1_Urbanevych_2022.pdf){:target="_blank"}
+
+{% include_relative /2022_metody_statystyczne_niestacjonarne/Zestaw1.md %}
+
+---
+
+
+*11.12.2022*
+
+**Grupa 2**: 08:00 - 10:15  
+**Grupa 1**: 10:30 - 12:45
+ 
+---
+
+*17.12.2022*
+
+<span style="color:red"> zjazd zdalny </span>
+
+**Grupa 2**: 10:00 - 13:15  
+**Grupa 1**: 13:30 - 16:45
+
+
+
+---
+
+*14.01.2023*
+
+**Grupa 2**: 10:30 - 12:45  
+**Grupa 1**: 13:00 - 15:15
+
+---
+
+*21.01.2023*
+
+**Grupa 2**: 10:30 - 12:45  
+**Grupa 1**: 14:00 - 16:15
+
+---
+
+*14.02.2023*
+
+**Grupa 2**: 12:00 - 14:15  
+**Grupa 1**: 14:30 - 16:45
+
+---
