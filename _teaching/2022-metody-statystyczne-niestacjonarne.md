@@ -25,7 +25,7 @@ show_title: true
 
 ### **Organizacja**
 
-Zajęcia będą prowadzone w sale `G-1-03` (zdalnie z wykorzystaniem `MS TEAMS` - proszę śledzić komunikaty w tej sprawie).
+Zajęcia będą prowadzone w sale `G-1-03` (lub z wykorzystaniem `MS TEAMS` - pod czas zjazdów zdalnych).
 Na każdym spotkaniu studenci otrzymają zestaw zadań (będzie on udostępniany na tej stronie). 
 
 
@@ -60,7 +60,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 *17.12.2022*
 
-<span style="color:red"> zjazd zdalny </span>
+<span style="color:#cc00ff"> zjazd zdalny </span>
 
 **Grupa 2**: 10:00 - 13:15  
 **Grupa 1**: 13:30 - 16:45
