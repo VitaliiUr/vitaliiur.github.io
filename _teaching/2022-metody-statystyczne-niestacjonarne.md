@@ -39,7 +39,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ### **Zestaw 1**
 
-*20.11.2022*
+*26.11.2022*
 
 **Grupa 2**: 08:00 - 10:15  
 **Grupa 1**: 10:30 - 12:45
