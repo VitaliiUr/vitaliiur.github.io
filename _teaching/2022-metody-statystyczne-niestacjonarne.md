@@ -55,7 +55,10 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 **Grupa 2**: 08:00 - 10:15  
 **Grupa 1**: 10:30 - 12:45
- 
+
+<!-- Process Markova + Poisson -->
+
+
 ---
 
 *17.12.2022*
@@ -65,7 +68,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 11:00 - 13:15  
 **Grupa 1**: 13:30 - 15:45
 
-
+<!-- Proces Kolejkowy -->
 
 ---
 
@@ -74,6 +77,11 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 10:30 - 12:45  
 **Grupa 1**: 13:00 - 15:15
 
+<!-- Population size estimation (Bayes) ?
+    Card game (BlackJack)  ?-->
+<!-- Proces Kolejkowy (paralelny konsekwentny)  ? -->
+
+
 ---
 
 *21.01.2023*
@@ -81,11 +89,15 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 10:30 - 12:45  
 **Grupa 1**: 14:00 - 16:15
 
+<!-- Kolokwium -->
+
 ---
 
 *14.02.2023*
 
 **Grupa 2**: 12:00 - 14:15  
 **Grupa 1**: 14:30 - 16:45
+
+<!-- Konsultacja / oddanie zadań -->
 
 ---
