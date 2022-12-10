@@ -4,7 +4,7 @@
 
 <div class="row mt-3" style="margin-bottom: 18px">
     <div class="col-sm mt-3 mt-md-0" align='center'>
-        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2021_metody_statystyczne/diagram.png" width="400">
+        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2022_metody_statystyczne_niestacjonarne/diagram.png" width="400">
     </div>
 </div>
 

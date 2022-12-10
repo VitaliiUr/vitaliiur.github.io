@@ -14,11 +14,11 @@ show_title: true
 - [Zestaw 1](#zestaw-1)
     - [Generator liczb losowych](#generator-liczb-losowych)
     - [Ruina gracza](#ruina-gracza)
-
-<!-- - [Zestaw 2](#zestaw-2)
+- [Zestaw 2](#zestaw-2)
     - [Symulacja procesu Markova](#symulacja-procesu-markova)
     - [Process Poissona](#process-poissona)
-- [Zestaw 3](#zestaw-3)
+
+<!-- - [Zestaw 3](#zestaw-3)
     - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego) -->
 
 ---
@@ -57,6 +57,10 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 1**: 10:30 - 12:45
 
 <!-- Process Markova + Poisson -->
+
+[Slajdy](/teaching/2022_metody_statystyczne_niestacjonarne/2_Urbanevych_2022.pdf){:target="_blank"}
+
+{% include_relative /2022_metody_statystyczne_niestacjonarne/Zestaw2.md %}
 
 
 ---
