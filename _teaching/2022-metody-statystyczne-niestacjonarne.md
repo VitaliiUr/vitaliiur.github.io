@@ -17,9 +17,8 @@ show_title: true
 - [Zestaw 2](#zestaw-2)
     - [Symulacja procesu Markova](#symulacja-procesu-markova)
     - [Process Poissona](#process-poissona)
-
-<!-- - [Zestaw 3](#zestaw-3)
-    - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego) -->
+- [Zestaw 3](#zestaw-3)
+    - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
 
 ---
 
@@ -66,6 +65,8 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ---
 
+### **Zestaw 3**
+
 *17.12.2022*
 
 <span style="color:#cc00ff"> zjazd zdalny </span>
@@ -74,6 +75,11 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 1**: 13:30 - 15:45
 
 <!-- Proces Kolejkowy -->
+
+[Slajdy](/teaching/2022_metody_statystyczne_niestacjonarne/3_Urbanevych_2022.pdf){:target="_blank"}
+
+{% include_relative /2022_metody_statystyczne_niestacjonarne/Zestaw3.md %}
+
 
 ---
 

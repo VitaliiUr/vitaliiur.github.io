@@ -2,7 +2,7 @@
 
 <div class="row mt-3" style="margin-bottom: 18px">
     <div class="col-sm mt-3 mt-md-0" align='center'>
-        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2021_metody_statystyczne/server.png" width="600">
+        <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/teaching/2022_metody_statystyczne_niestacjonarne/server.png" width="600">
     </div>
 </div>
 
@@ -30,14 +30,13 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     2. $$\lambda_A = 15$$, $$\lambda_D = 8$$
     3. **n=1000** zadań
     4. Wykresy jak w **A**
-    5. Pomyśleć co mogą znaczyć następne wzory:  
+    5. Pomyśleć co mogą znaczyć następne wzory *(narysować wykresy i porównać z tymi które juz mamy)* :  
      $$
      \begin{eqnarray*}
         (\lambda_A - \lambda_D)t\\ 
         \frac{\lambda_A - \lambda_D}{\lambda_D}t
     \end{eqnarray*}
     $$  
-    *(można narysować wykresy i porównać z tymi które juz mamy)*
 
 - **Problem D** 
     Zrobić następne wykresy:  
@@ -45,6 +44,8 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     2. E(liczba zadań) w zależności od $$\lambda_D$$
     3. E(liczba zadań) w zależności od $$r = \frac{\lambda_A}{\lambda_D}$$
     4. ... to samo dla E(czas oczekiwania)
+   
+   E(x) - znaczy wartość oczekiwana
 
 - **Problem E**  
    Zrobić graf jak w [poprzednim zestawie](#symulacja-procesu-markova)
