@@ -38,7 +38,7 @@ Zaimplementowanie symulacji procesu kolejkowego z jednym serwerem.
     \end{eqnarray*}
     $$  
 
-- **Problem D** 
+- **Problem D**  
     Zrobić następne wykresy:  
     1. E(liczba zadań) w zależności od $$\lambda_A$$
     2. E(liczba zadań) w zależności od $$\lambda_D$$

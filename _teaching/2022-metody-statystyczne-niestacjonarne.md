@@ -19,6 +19,7 @@ show_title: true
     - [Process Poissona](#process-poissona)
 - [Zestaw 3](#zestaw-3)
     - [Symulacja procesu kolejkowego](#symulacja-procesu-kolejkowego)
+- [Zestaw 4](#zestaw-4)
 
 ---
 
@@ -83,14 +84,14 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ---
 
+### **Zestaw 4**
+
 *14.01.2023*
 
 **Grupa 2**: 10:30 - 12:45  
 **Grupa 1**: 13:00 - 15:15
 
-<!-- Population size estimation (Bayes) ?
-    Card game (BlackJack)  ?-->
-<!-- Proces Kolejkowy (paralelny konsekwentny)  ? -->
+{% include_relative /2022_metody_statystyczne_niestacjonarne/Zestaw4_mark_and_recapture.md %}
 
 
 ---
@@ -101,6 +102,10 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 1**: 14:00 - 16:15
 
 <!-- Kolokwium -->
+
+<!-- Population size estimation (Bayes) ?
+    Card game (BlackJack)  ?-->
+<!-- Proces Kolejkowy (paralelny konsekwentny)  ? -->
 
 ---
 
