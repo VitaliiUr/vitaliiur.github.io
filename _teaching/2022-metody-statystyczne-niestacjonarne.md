@@ -114,7 +114,7 @@ Oddanie zadań
 **Grupa 2**: 12:00 - 14:15  
 **Grupa 1**: 14:30 - 16:45
 
-* Kolokwium
-* Konsultacja / oddanie zadań
+- Kolokwium
+- Konsultacja / oddanie zadań
 
 ---
