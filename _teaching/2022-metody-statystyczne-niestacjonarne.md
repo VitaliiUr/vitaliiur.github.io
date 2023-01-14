@@ -101,7 +101,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 10:30 - 12:45  
 **Grupa 1**: 14:00 - 16:15
 
-<!-- Kolokwium -->
+Oddanie zadań
 
 <!-- Population size estimation (Bayes) ?
     Card game (BlackJack)  ?-->
@@ -114,6 +114,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 **Grupa 2**: 12:00 - 14:15  
 **Grupa 1**: 14:30 - 16:45
 
-<!-- Konsultacja / oddanie zadań -->
+* Kolokwium
+* Konsultacja / oddanie zadań
 
 ---
