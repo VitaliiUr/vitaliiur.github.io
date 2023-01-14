@@ -109,7 +109,7 @@ Minimalnym warunkiem zaliczenia jest dostanie `2 punktów` z każdego zestawu. J
 
 ---
 
-*14.02.2023*
+*4.02.2023*
 
 **Grupa 2**: 12:00 - 14:15  
 **Grupa 1**: 14:30 - 16:45
