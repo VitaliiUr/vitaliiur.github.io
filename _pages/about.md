@@ -18,20 +18,21 @@ news: false  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-**Ph.D. student, researcher** at [Jagiellonian University](https://fais.uj.edu.pl/en_GB/the-institute-of-physics)
+**Ph.D., Assistant Professor** at [Jagiellonian University](https://fais.uj.edu.pl/en_GB/the-institute-of-physics)
 
 
 - e-mail: [vitalii.urbanevych@doctoral.uj.edu.pl](mailto:vitalii.urbanevych@doctoral.uj.edu.pl)  
 - adress: prof. St. Łojasiewicza 11, 30-348 Kraków, Poland  
 - room: B-2-26 (2 floor)
 
-**Junior NLP Engineer** at [Samsung R&D Institute Poland](https://samsungrd.pl) 
+**Software Engineer** at [AON](https://www.aon.com/poland/default.jsp) 
+<!-- **Junior NLP Engineer** at [Samsung R&D Institute Poland](https://samsungrd.pl)  -->
 
-- e-mail: [v.urbanevych@samsung.com](mailto:v.urbanevych@samsung.com)
+- e-mail: [vitalii.urbanevych@aon.com](mailto:vitalii.urbanevych@aon.com)
 
-#### Teaching 2022/2023
+#### Teaching 2024/2025
 
-* [Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b>](/teaching/2022-metody-statystyczne-niestacjonarne/)
+<!-- * [Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b>](/teaching/2022-metody-statystyczne-niestacjonarne/) -->
 
 <!-- #### What you can find here
 

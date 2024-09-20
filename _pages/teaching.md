@@ -6,7 +6,7 @@ show_title: false
 # description: Materials for courses you taught. Replace this text with your description.
 nav: true
 horizontal: false
-display_categories: [22/23Z]
+display_categories: [24/25Z]
 ---
 
 <!-- For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_teaching/` so that you can have a dedicated page for each course.
