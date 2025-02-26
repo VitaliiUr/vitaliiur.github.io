@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="vitaliiur.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="vitaliiur.github.io/" rel="alternate" type="text/html" /><updated>2025-02-26T13:35:09+00:00</updated><id>vitaliiur.github.io/feed.xml</id><title type="html">VU</title><subtitle></subtitle><entry><title type="html">Olympic games medals</title><link href="vitaliiur.github.io/blog/2021/olympics/" rel="alternate" type="text/html" title="Olympic games medals" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>vitaliiur.github.io/blog/2021/olympics</id><content type="html" xml:base="vitaliiur.github.io/blog/2021/olympics/"><![CDATA[<p>Olympic games medals starting from the 1945 (after WWII).</p>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <iframe src="/assets/html/olympics-total_medals.html" width="100%" height="415"></iframe>
+    </div>
+</div>
+<div class="caption">
+    <a> Total number of medals by year</a>
+</div>
+
+<p>The total number of medals was increasing with each subsequent year. 
+Next I want to find top
+countries by the number of gold medals from all the years.</p>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <iframe src="/assets/html/olympics.html" width="100%" height="415"></iframe>
+    </div>
+</div>
+<div class="caption">
+    <a> Number of gold medals obtained by a country at particluar year</a>
+</div>
+
+<p>It is interesting that there was a tough competition between <code class="language-plaintext highlighter-rouge">USA</code> and <code class="language-plaintext highlighter-rouge">USSR</code> in the years of cold war. In the year when one of that countries boycotted Olympics (1980 and 1984), the balance of power has been shifted to another one.</p>
+
+<p>Nowadays, <code class="language-plaintext highlighter-rouge">Russia</code> cannot impose a fight like this for the <code class="language-plaintext highlighter-rouge">USA</code>, but it seems that <code class="language-plaintext highlighter-rouge">China</code> can.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Olympic games medals starting from the 1945 (after WWII).]]></summary></entry><entry><title type="html">Bayesian linear regression and Metropolis-Hastings sampler</title><link href="vitaliiur.github.io/blog/2021/linreg/" rel="alternate" type="text/html" title="Bayesian linear regression and Metropolis-Hastings sampler" /><published>2021-06-11T00:00:00+00:00</published><updated>2021-06-11T00:00:00+00:00</updated><id>vitaliiur.github.io/blog/2021/linreg</id><content type="html" xml:base="vitaliiur.github.io/blog/2021/linreg/"><![CDATA[<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/linear_regression.png" />
+    </div>
+</div>
+
+<h2 id="model-definition">Model definition</h2>
+
+<p><strong>NOTE:</strong>
+Theoretical considerations are mainly taken from <d-cite key="bishop_pattern"></d-cite>.</p>
+
+<p>Let’s consider a set of observations \(\mathbf{x}\) together
+with observations of the target variable \(t\).</p>
+
+<p>Assume that our target variable \(t\) is given by a deterministic function \(y(\mathbf{x}, \mathbf{w})\) with additive Gaussian noise:</p>
+
+\[\begin{equation}
+  t = y(\mathbf{x}, \mathbf{w}) + \epsilon,
+  \label{model}
+\end{equation}\]
+
+<p>where \(\epsilon\) defines a random Gaussian noise with a zero mean and precision equal \(\beta\) (inverse variance).</p>
+
+<p>The function \(y(\mathbf{x}, \mathbf{w})\) defines our model as <strong>x</strong> is a data and <strong>w</strong>
+is a parameters vector.</p>
+
+<p>\begin{equation}
+  y(\mathbf{x}, \mathbf{w}) = \mathbf{w}^T \mathbf{\phi}(\mathbf{x}),
+  \label{basfunc}
+\end{equation}</p>
+
+<p>where \(\mathbf{\phi}(\mathbf{x})\) is a set of basis functions with a dummy zero component
+\(\phi_0(\mathbf{x}) = 1\). These functions can belong to different families(for example Gaussian
+or sigmoid functions), but in all that cases the model will be called <em>linear regression</em>
+as it will be linear for \(\mathbf{w}\). The simplest choice of basis functions where \(y(\mathbf{x}, \mathbf{w}) = \mathbf{w}^T \mathbf{x}\).</p>
+
+<p>So we can write</p>
+
+\[\begin{equation}
+  p (t \mid \mathbf{x}, \mathbf{w}, \beta) = N(t \mid \mathbf{w}^T \mathbf{\phi}(\mathbf{x}), \beta^{-1})
+  \label{norm}
+\end{equation}\]
+
+<p>Assuming that data points are independent and generated from (\ref{norm}), we can write a likelihood function as a function from \(\mathbf{w}\):</p>
+
+<p>\begin{equation}
+  p (\mathbf{t} \mid \mathbf{X}, \mathbf{w}, \beta) = \prod_{i=1}^N N(t_i \mid \mathbf{w}^T \mathbf{\phi}(\mathbf{x}_i), \beta^{-1}),
+  \label{likelihood}
+\end{equation}</p>
+
+<p>where \(\mathbf{X}\) is a vector of inputs \((\mathbf{x}_1, \mathbf{x}_2,...,\mathbf{x}_N)\) and \(\mathbf{t}\) is a vector of target points
+\(\mathbf{t} = (t_1, t_2,..., t_N)\) and \(\beta\) - a precision parameter.</p>
+
+<p>Maximizing a log of likelihood (\ref{likelihood}) with respect to \(\mathbf{w}\) one can easili obtain an expression for the fitting parameters \(\mathbf{w}\) (so-called <code class="language-plaintext highlighter-rouge">Normal equation</code>)</p>
+
+<p>\begin{equation}
+  \mathbf{w}_{ML} = \left(\Phi^T\Phi\right)^{-1}\Phi^T\mathbf{t},
+  \label{maximized1}
+\end{equation}</p>
+
+<p>where \(\Phi _{ij} = \phi_j(\mathbf{x}_i)\)</p>
+
+<p>Here we can generate some data and check the model. Let’s generate 
+a set of 10 observations from the linear function \(t = -3x+2+N(0,1/\beta)\) with \(\beta = 1.0\).
+We wind the fitting parameters using <code class="language-plaintext highlighter-rouge">normal equation</code>.</p>
+
+<details>
+<summary>Click to see the code</summary>
+  
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+    <span class="kn">import</span> <span class="n">scipy</span>
+    <span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">N</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">w_orig</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span> <span class="c1"># true values of the parameters
+</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># noize precision (inverse variance)
+</span>    <span class="n">PHI</span> <span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">vstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="nf">ones</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))).</span><span class="n">T</span> <span class="c1"># x with additional columns with ones (\Phi matrix)
+</span>    <span class="n">noize</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">beta</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">PHI</span><span class="nd">@w_orig</span> <span class="o">+</span> <span class="n">noize</span> <span class="c1"># target
+</span>
+    <span class="n">w_ml</span> <span class="o">=</span> <span class="p">(</span><span class="nf">inv</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">))).</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="c1"># normal equation
+</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">"</span><span class="s">x</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">data</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">PHI</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">w_ml</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">tab:green</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">normal equation</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">PHI</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">w_orig</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">tab:red</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">true line</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">x</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">t</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+  </code></pre></figure>
+
+</details>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/fited-ml.png" />
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Original parameters:</span><span class="sh">"</span><span class="p">,</span> <span class="o">*</span><span class="n">w_orig</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Normal equation parameters:</span><span class="sh">"</span><span class="p">,</span> <span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="n">w_ml</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">Original</span> <span class="n">parameters</span><span class="p">:</span> <span class="o">-</span><span class="mf">3.0</span> <span class="mf">2.0</span>
+    <span class="n">Normal</span> <span class="n">equation</span> <span class="n">parameters</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.25</span> <span class="mf">1.42</span>
+  </code></pre></figure>
+
+<p>The difference with true values is \(\sim 25\%\) but this is the maximum result which can be obtained from such a dataset, so whese values could be regarded as a reference for other models.</p>
+
+<p>One can also apply an iterative approach,
+e.g. <code class="language-plaintext highlighter-rouge">Gradient descent</code>. In this case, we set some zero approximation for the parameters and gradually come closer to true values. The demonstration of such a procedure is on the figure below.</p>
+
+<details>
+<summary>Click to see the code</summary>
+  
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])[</span><span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">,:]</span> <span class="c1"># first guess
+</span>    <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="c1"># learning rate
+</span>
+    <span class="n">xc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">meshgrid</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">)</span>
+    <span class="n">www</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">moveaxis</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">stack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">sum</span><span class="p">((</span><span class="n">t</span> <span class="o">-</span> <span class="n">www</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">vstack</span><span class="p">((</span><span class="n">w0</span><span class="p">,</span> <span class="n">w0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">w0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">)).</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">)))</span>
+        
+    <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">pink</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_orig</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="sh">'</span><span class="s">none</span><span class="sh">'</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">true value</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">w0</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">w0</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">w0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">w0</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="sh">"</span><span class="s">--</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">start</span><span class="sh">"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_ml</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="sh">'</span><span class="s">none</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">lime</span><span class="sh">'</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">normal equation value</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">savefig</span><span class="p">(</span><span class="sh">"</span><span class="s">../img/linreg/descent.png</span><span class="sh">"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+  </code></pre></figure>
+
+
+</details>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/descent.png" />
+    </div>
+</div>
+<div class="caption">
+    Gradient descent
+</div>
+
+<hr />
+
+<h2 id="bayesian-approach-ba">Bayesian approach (BA)</h2>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/homo-bayesians.jpg" />
+    </div>
+</div>
+
+<p>According to BA, we treat regression parameters not as unknown constants,
+but as random variables. Therefore we shall define subjective information about
+the set of parameters \(\mathbf{w}\) as a prior distribution.
+There are lots of possibilities but the  simplest is to 
+set this distribution to be a Gaussian, 
+as it is conjugate with respect to the likelihood
+function (\ref{likelihood}).</p>
+
+<p>\begin{equation}
+  p(\mathbf{w}) = N(\mathbf{w} \mid \mathbf{m_0}, \mathbf{S_0}),
+  \label{prior_w}
+\end{equation}
+where \(\mathbf{m_0}\) and \(\mathbf{S_0}\) are arbitrary defined as a first approximation.</p>
+
+<p>With such a simple prior one can get the corresponding posterior distribution analytically (more details in <d-cite key="bishop_pattern"></d-cite>)</p>
+
+\[\begin{equation}
+  p(\mathbf{w} \mid \mathbf{t}, \mathbf{X}, \beta) = N(\mathbf{w} \mid \mathbf{m_1}, \mathbf{S_1}),
+  \label{posterior_w}
+\end{equation}\]
+
+<p>with well-defined parameters</p>
+
+\[\begin{eqnarray}
+  \mathbf{m}_1 &amp;=&amp; \mathbf{S}_1\left(\mathbf{S}_0^{-1}\mathbf{m_0} + \beta \mathbf{\Phi}^T\mathbf{t}\right)
+  \label{m1}\\
+  \mathbf{S}_1^{-1} &amp;=&amp; \mathbf{S}_0^{-1} + \beta \mathbf{\Phi}^T\mathbf{\Phi}.
+  \label{S1}
+\end{eqnarray}\]
+
+<p>According to the Bayes equation, the (\ref{posterior_w}) is nothing else but normalized product of (\ref{likelihood}) and (\ref{prior_w}). \(\mathbf{m}_1\) is a vector of means  and \(\mathbf{S}_1\) is a covariance matrix for \(\mathbf{w}\).</p>
+
+<p>Choosing as a first approximation \(\mathbf{m_0}=(0,0)\) and \(\mathbf{S_0} = \big(\begin{smallmatrix} 10 &amp; 0\\ 0 &amp; 10 \end{smallmatrix}\big)\), I obtained next results:</p>
+
+<details>
+  <summary>Click to see the code</summary>
+    
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">PHI</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span><span class="p">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nf">prod</span><span class="p">(</span><span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">norm</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">w</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">),</span>\
+                           <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">beta</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">norm</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">w</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">),</span>\
+                                        <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">beta</span><span class="p">))</span>
+     
+    <span class="k">def</span> <span class="nf">m1_S1</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">PHI</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span><span class="p">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="n">S1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">S0</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="nd">@PHI</span><span class="p">)</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">S1</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">S0</span><span class="p">).</span><span class="nf">dot</span><span class="p">(</span><span class="n">m0</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">S1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">S0</span><span class="p">)</span> <span class="o">+</span>\
+                 <span class="n">beta</span><span class="o">*</span><span class="n">PHI</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">].</span><span class="n">T</span><span class="nd">@PHI</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">])</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">S1</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">inv</span><span class="p">(</span><span class="n">S0</span><span class="p">).</span><span class="nf">dot</span><span class="p">(</span><span class="n">m0</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">PHI</span><span class="p">.</span><span class="n">T</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m1</span><span class="p">,</span> <span class="n">S1</span>
+
+    <span class="n">m0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]])</span>
+    <span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([[[</span><span class="n">val0</span><span class="p">,</span><span class="n">val1</span><span class="p">]</span> <span class="k">for</span> <span class="n">val0</span> <span class="ow">in</span> <span class="n">w0</span><span class="p">]</span> <span class="k">for</span> <span class="n">val1</span> <span class="ow">in</span> <span class="n">w1</span><span class="p">])</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mean</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
+
+    <span class="n">lk</span> <span class="o">=</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">PHI</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="n">m1</span><span class="p">,</span> <span class="n">S1</span> <span class="o">=</span> <span class="nf">m1_S1</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">PHI</span><span class="p">)</span>
+    <span class="n">pr1</span> <span class="o">=</span> <span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mean</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">S1</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">RdYlGn_r</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_orig</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">"</span><span class="s">+</span><span class="sh">"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">true value</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_ml</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">black</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">prior</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span><span class="n">w1</span><span class="p">,</span><span class="n">pr1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">RdYlGn_r</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_orig</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">True</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_ml</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">black</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Normal equation</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">posterior</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">PHI</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">m1</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">tab:green</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">label=</span><span class="sh">"</span><span class="n">bayesian</span> <span class="n">mean</span><span class="sh">"</span><span class="s">)
+    plt.plot(x,PHI.dot(w_orig), c=</span><span class="sh">"</span><span class="n">tab</span><span class="p">:</span><span class="n">red</span><span class="sh">"</span><span class="s">, label=</span><span class="sh">"</span><span class="n">true</span> <span class="n">line</span><span class="sh">"</span><span class="s">)
+    plt.legend()
+    plt.xlabel(</span><span class="sh">"</span><span class="n">x</span><span class="sh">"</span><span class="s">)
+    plt.ylabel(</span><span class="sh">"</span><span class="n">t</span><span class="sh">"</span><span class="s">)
+    plt.xlim([-1,1])
+    plt.ylim([-1,5])
+    plt.tight_layout()
+    plt.show()
+  </span></code></pre></figure>
+
+
+</details>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/bayesian_fit.png" />
+    </div>
+</div>
+<div class="caption">
+    Prior(left), posterior(middle) and fitted line with parameters as a mean of the posterior.
+</div>
+
+<p>with</p>
+
+\[\begin{eqnarray}
+  \mathbf{m_1} &amp;=&amp; (-2.18,1.4)
+  \label{m1_res}\\
+  \mathbf{S_1}  &amp;=&amp; \big(\begin{smallmatrix}  0.27 &amp; -0.01\\ -0.01 &amp; 0.1 \end{smallmatrix}\big).
+  \label{S1_res}
+\end{eqnarray}\]
+
+<p>The values of \(\mathbf{m_1}\) are close to the values of \(\mathbf{w}\) obtained within the frequentists’ approach (FA), but shifted towards \(\mathbf{m_0}\) values.</p>
+
+<hr />
+
+<h2 id="metropolis-hastings-sampler-for-the-posterior-distribution"><a href="https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm">Metropolis-Hastings sampler</a> for the posterior distribution</h2>
+
+<p>Although it was easy enough to get the posterior distribution in the previous example, it is not always the case. Metropolis-Hastings method allows to sample values from complex probability functions. As posterior is proportional to the product of the likelihood and prior, it is enough to sample from such a product to find all the neccessary distribution parameters.</p>
+
+<p>The first step is to test the Metropolis-Hastings sampler on the same normal prior. We know the analytical result so we can evaluate the precision of such model.</p>
+
+<p>The starting point for the sampling is chosen to be \((0,0)\), the step \(\delta = 0.5\) and the number of iterations is \(N = 10^4\). The sampling result is below.</p>
+
+<details>
+  <summary>Click to see the code</summary>
+    
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">posterior</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">PHI</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">PHI</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="nf">prior</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">)</span>
+
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])[</span><span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+    <span class="c1"># for the background colormap
+</span>    <span class="n">w_0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">w_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([[[</span><span class="n">val0</span><span class="p">,</span><span class="n">val1</span><span class="p">]</span> <span class="k">for</span> <span class="n">val0</span> <span class="ow">in</span> <span class="n">w_0</span><span class="p">]</span> <span class="k">for</span> <span class="n">val1</span> <span class="ow">in</span> <span class="n">w_1</span><span class="p">])</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="nf">prior</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">)</span>
+    <span class="n">lk</span> <span class="o">=</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">data_PHI</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> 
+
+    <span class="c1"># sampling
+</span>    <span class="k">while</span> <span class="n">samples</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">stats</span><span class="p">.</span><span class="n">uniform</span><span class="p">.</span><span class="nf">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=-</span><span class="n">delta</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nf">posterior</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">data_PHI</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">)</span>\
+                   <span class="o">/</span><span class="nf">posterior</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">data_PHI</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">S0</span><span class="p">))</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">uniform</span><span class="p">.</span><span class="nf">rvs</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">vstack</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="n">candidate</span><span class="p">))</span>
+
+    <span class="c1"># animation
+</span>    <span class="kn">from</span> <span class="n">celluloid</span> <span class="kn">import</span> <span class="n">Camera</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="nc">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Posterior</span><span class="sh">"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">[:</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="sh">"</span><span class="s">.-</span><span class="sh">"</span><span class="p">,</span>
+             <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="sh">"</span><span class="s">deeppink</span><span class="sh">"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">samples</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">marker</span><span class="o">=</span><span class="sh">"</span><span class="s">x</span><span class="sh">"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">white</span><span class="sh">"</span><span class="p">,</span>
+                <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">starting point</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="sh">'</span><span class="s">bisque</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="nf">unique</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">geomspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">samples</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                       <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">30</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">w_0</span><span class="p">,</span><span class="n">w_1</span><span class="p">,</span><span class="n">pr</span><span class="o">*</span><span class="n">lk</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">RdYlGn_r</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">[:</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="sh">"</span><span class="s">.-</span><span class="sh">"</span><span class="p">,</span>
+                 <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="sh">"</span><span class="s">deeppink</span><span class="sh">"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">samples</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">marker</span><span class="o">=</span><span class="sh">"</span><span class="s">x</span><span class="sh">"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">"</span><span class="s">white</span><span class="sh">"</span><span class="p">,</span>
+                    <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">starting point</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">camera</span><span class="p">.</span><span class="nf">snap</span><span class="p">()</span>
+    <span class="n">animation</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="nf">animate</span><span class="p">()</span>
+    <span class="n">animation</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+  </code></pre></figure>
+
+</details>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/anim.gif" />
+    </div>
+</div>
+<div class="caption">
+    Metropolis-Hastings sampling
+</div>
+
+<p>Now we can find mean values of the samples and their covariance matrix.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">  <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Mean:</span><span class="sh">"</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Covariance:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">cov</span><span class="p">(</span><span class="n">samples</span><span class="p">.</span><span class="n">T</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">Mean</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.2</span>  <span class="mf">1.4</span><span class="p">]</span>
+    <span class="n">Covariance</span><span class="p">:</span>
+          <span class="p">[[</span> <span class="mf">0.27</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">]</span>
+          <span class="p">[</span><span class="o">-</span><span class="mf">0.02</span>  <span class="mf">0.1</span> <span class="p">]]</span></code></pre></figure>
+
+<p>These values are quite close to analytical (\ref{m1_res}) and (\ref{S1_res}). So this method sufficiently approximates posterior probability disribution.</p>
+
+<hr />
+
+<p>We can observe, that the numerical approach works, so we can define the prior in a more complicated way and numerically estimate the regression parameters.</p>
+
+<p>I define the prior distribution as a combiantion of two Normal distributions and apply it for the same dataset.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">prior</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+  <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                                                 <span class="n">cov</span><span class="o">=</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]])</span><span class="o">+</span>\
+      <span class="mf">0.5</span><span class="o">*</span><span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">.</span><span class="nf">pdf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                                              <span class="n">cov</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.9</span><span class="p">,</span><span class="o">-</span><span class="mf">0.0</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">]])</span></code></pre></figure>
+
+<details>
+  <summary>Click to see the code</summary>
+    
+<figure class="highlight"><pre><code class="language-python" data-lang="python">      <span class="n">w_0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+      <span class="n">w_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+      <span class="n">w</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([[[</span><span class="n">val0</span><span class="p">,</span><span class="n">val1</span><span class="p">]</span> <span class="k">for</span> <span class="n">val0</span> <span class="ow">in</span> <span class="n">w_0</span><span class="p">]</span> <span class="k">for</span> <span class="n">val1</span> <span class="ow">in</span> <span class="n">w_1</span><span class="p">])</span>
+      
+      <span class="n">lk</span> <span class="o">=</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">PHI</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+      <span class="n">pr</span> <span class="o">=</span> <span class="nf">prior</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+      <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">w_0</span><span class="p">,</span><span class="n">w_1</span><span class="p">,</span><span class="n">pr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">RdYlGn_r</span><span class="sh">'</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_orig</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">True</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_ml</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">black</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Normal equation</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">prior</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">contourf</span><span class="p">(</span><span class="n">w_0</span><span class="p">,</span><span class="n">w_1</span><span class="p">,</span><span class="n">pr</span><span class="o">*</span><span class="n">lk</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">RdYlGn_r</span><span class="sh">'</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_orig</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">True</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">w_ml</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sh">'</span><span class="s">black</span><span class="sh">'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Normal equation</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">prior$\times$likelihood</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">$w_0$</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">$w_1$</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+  </code></pre></figure>
+
+</details>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/compl_prior.png" />
+    </div>
+</div>
+
+<p>Now I can generate samples using the same numerical algorythm.</p>
+
+<div class="row mt-3" style="margin-bottom: 18px">
+    <div class="col-sm mt-3 mt-md-0" align="center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/linreg/anim2.gif" />
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">  <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Mean:</span><span class="sh">"</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Covariance:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nf">cov</span><span class="p">(</span><span class="n">samples</span><span class="p">.</span><span class="n">T</span><span class="p">))</span>
+    <span class="n">Mean</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.83022425</span>  <span class="mf">1.64481683</span><span class="p">]</span>
+    <span class="n">Covariance</span><span class="p">:</span>
+    <span class="p">[[</span> <span class="mf">0.62099147</span> <span class="o">-</span><span class="mf">0.04302909</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.04302909</span>  <span class="mf">0.4241194</span> <span class="p">]]</span></code></pre></figure>
+
+<p>These values are still quite close to analytical (\ref{m1_res}) and (\ref{S1_res}). The prior I have chosen is very unrealistic, so, in fact, it only complicates the procedure. Nevertheless, the sampling method works well and makes possible to retrieve distribution parameters.</p>
+
+<hr />
+
+<p>In BA we regard parameters as random variables, so we are not satisfied with only point estimations of the target variable \(t\). We would like to estimate a credible interval for our prediction as well. For the Gaussian conjugated prior it is also possible to obtain analytical solution. Still, numerical methods can be used for the predictive distribution.</p>
+
+<p>I will demonstrate it in the next post.</p>
+
+<!-- ## Predictive distribution
+
+At the moment we have obtained an estimation of the regression parameters within the frequentists' and bayesian approach both analytically and numerically. We can build a fitted line and make a predictions for new points.
+
+But in BA we regard parameters as random variables, so we are not satisfied with only point estimations. Also we would like to find a credible interval for our prediction. In <d-cite key="bishop_pattern"></d-cite> the predictiv -->]]></content><author><name>Vitalii Urbanevych</name></author><summary type="html"><![CDATA[on Python]]></summary></entry><entry><title type="html">Lewa Baba Jaga</title><link href="vitaliiur.github.io/blog/2021/youtube-video/" rel="alternate" type="text/html" title="Lewa Baba Jaga" /><published>2021-05-24T18:00:00+00:00</published><updated>2021-05-24T18:00:00+00:00</updated><id>vitaliiur.github.io/blog/2021/youtube-video</id><content type="html" xml:base="vitaliiur.github.io/blog/2021/youtube-video/"><![CDATA[<p>This is a 30m rock at Zakrzówek, Kraków. The rout difficulty is <code class="language-plaintext highlighter-rouge">VI</code> (Polish system) or <code class="language-plaintext highlighter-rouge">6a</code> (French).</p>
+
+<div align="center">
+<p>
+<iframe width="490" height="515" src="https://www.youtube.com/embed/tjRN5vce3fI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</p>
+</div>
+
+<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[The 'Baba Jaga' rock.]]></summary></entry></feed>
