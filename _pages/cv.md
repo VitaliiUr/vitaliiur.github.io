@@ -6,4 +6,4 @@ description: Curriculum Vitae
 nav: true
 ---
 
-<meta HTTP-EQUIV="REFRESH" content="0; url=/assets/pdf/Urbanevych_moderncv.pdf">
+<meta HTTP-EQUIV="REFRESH" content="0; url=/assets/pdf/Urbanevych_CV_technical.pdf">

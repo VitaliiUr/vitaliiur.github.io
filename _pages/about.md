@@ -21,7 +21,7 @@ social: true  # includes social icons at the bottom of the page
 **Ph.D., Assistant Professor** at [Jagiellonian University](https://fais.uj.edu.pl/en_GB/the-institute-of-physics)
 
 
-- e-mail: [vitalii.urbanevych@doctoral.uj.edu.pl](mailto:vitalii.urbanevych@doctoral.uj.edu.pl)  
+- e-mail: [vitalii.urbanevych@uj.edu.pl](mailto:vitalii.urbanevych@doctoral.uj.edu.pl)  
 - adress: prof. St. Łojasiewicza 11, 30-348 Kraków, Poland  
 - room: B-2-26 (2 floor)
 
@@ -30,7 +30,7 @@ social: true  # includes social icons at the bottom of the page
 
 - e-mail: [vitalii.urbanevych@aon.com](mailto:vitalii.urbanevych@aon.com)
 
-#### Teaching 2024/2025
+<!-- #### Teaching 2024/2025 -->
 
 <!-- * [Metody statystyczne (ćwiczenia) - <b style="color:#05ffac">studia niestacjonarne</b>](/teaching/2022-metody-statystyczne-niestacjonarne/) -->
 
